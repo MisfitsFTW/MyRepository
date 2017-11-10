@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 5c30c8a9b03263346a0073938a34f3eb
+timeCreated: 1509444368
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: BM block
+  fontNames:
+  - BM block
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
