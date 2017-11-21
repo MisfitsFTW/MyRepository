@@ -20,7 +20,20 @@ public class LevelManager : MonoBehaviour {
     {
         SceneManager.LoadScene(sceneName);
     }
-
+    public void BrickDestroy()
+    {
+        if (BrickScript.breakableCount <= 0)
+        {
+            LoadNextScene();
+        }
+    }
+    public void LoadNextScene()
+    {
+        BrickScript.breakableCount = 0;
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        //buildScene is the number of the level
+        SceneManager.LoadScene(currentScene + 1);
+    }
     public void QuitGame()
     {
         UnityEditor.EditorApplication.isPlaying = false;

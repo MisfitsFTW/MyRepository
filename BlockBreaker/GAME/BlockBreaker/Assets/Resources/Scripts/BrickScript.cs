@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(AudioSource))]//To ensure the brick has an audio source
 public class BrickScript : MonoBehaviour {
+
+    public static int breakableCount = 0;
+
     int timesHit;
     public int maxHits;
-    public AudioClip crack;
+    AudioClip crack;
+
+    LevelManager levelManager = new LevelManager();
+    //So we can load the next scene, like in lose border Script
+
 	// Use this for initialization
 	void Start () {
-
+        breakableCount++;
+        print(breakableCount);
+        crack = Resources.Load("Sounds/crack", typeof(AudioClip)) as AudioClip;
         timesHit = 0;
 	}
 	
@@ -22,8 +31,16 @@ public class BrickScript : MonoBehaviour {
         //gameObject.name is the name of the bricks(brick-brick(4))
         if (timesHit >= maxHits)
         {
-            GetComponent<AudioSource>().Play();
+            //TestWin();
+            AudioSource.PlayClipAtPoint(crack, this.transform.position);
+            breakableCount--;
+            print(breakableCount);
+            levelManager.BrickDestroy();
             Destroy(gameObject);
         }
+    }
+    void TestWin()
+    {
+        levelManager.LoadNextScene();
     }
 }
